@@ -25,6 +25,17 @@ To run this project locally, follow these steps:
 - Click on the directional buttons (`Forward`, `Backward`, `Left`, `Right`) to send commands to the robot.
 - The selected direction will be stored in the database (`directions` table).
 
+
+## Screenshots
+### Control Page
+![Control Page](images/control_page.png)
+*Description: Screenshot of the control_robot.php page.*
+
+### Display Page
+![Display Page](images/display_page.png)
+*Description: Screenshot of the display_last_direction.php page.*
+
+
 ## Database Schema
 The `directions` table schema:
 ```sql
