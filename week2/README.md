@@ -26,11 +26,11 @@ To run this project locally, follow these steps:
 
 ## Screenshots
 ### Control Page
-![Control Page](images/control_page.png)
+![Control Page](https://github.com/Sarah3254/Smart-methods/blob/main/week2/images/Screenshot%202024-07-09%20182720.png)
 *Description: Screenshot of the control_robot.php page.*
 
 ### Display Page
-![Display Page](images/display_page.png)
+![Display Page](https://github.com/Sarah3254/Smart-methods/blob/main/week2/images/Screenshot%202024-07-09%20182658.png)
 *Description: Screenshot of the display_last_direction.php page.*
 
 
