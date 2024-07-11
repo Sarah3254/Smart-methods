@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Speech to Text</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        button {
+            background-color: #8A997D;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #6B7B69;
+        }
+        #transcriptions {
+            margin-top: 20px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Speech to Text Converter</h1>
+    <button onclick="startRecording()">Start Recording</button>
+    <p id="result"></p>
+    <div id="transcriptions"></div>
+
+    <script>
+        function startRecording() {
+            const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = 'en-US';
+
+            recognition.onresult = function(event) {
+                const transcript = event.results[0][0].transcript;
+                document.getElementById('result').innerText = transcript;
+                saveToDatabase(transcript);
+                recognition.stop();
+            };
+
+            recognition.onerror = function(event) {
+                console.error('Speech recognition error', event);
+                recognition.stop();
+            };
+
+            recognition.start();
+        }
+
+        function saveToDatabase(text) {
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "save_transcription.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    document.getElementById('transcriptions').innerHTML += `<p>${text}</p>`;
+                } else {
+                    console.error('Error saving transcription');
+                }
+            };
+            xhr.send("text=" + encodeURIComponent(text));
+        }
+    </script>
+</body>
+</html>
