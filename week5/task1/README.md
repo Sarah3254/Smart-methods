@@ -49,7 +49,7 @@ Before running the application, ensure you have the following installed:
   - Handles POST requests to convert text to speech and save it as an audio file.
   - Serves the generated audio file to be played in the browser.
 
-## Acknowledgments
+## Libraries and Tools
 
 - [Flask](https://flask.palletsprojects.com/) - Web framework used for the backend.
 - [pyttsx3](https://pyttsx3.readthedocs.io/en/latest/) - Python library used for text-to-speech conversion.
