@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text to Speech Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #D67E5D;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin: 10px 0;
+            font-size: 16px;
+            padding: 10px;
+        }
+        button {
+            background-color: #8A997D;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #6B7B69;
+        }
+        audio {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Text to Speech Converter</h1>
+    <form method="POST" action="/convert">
+        <textarea name="text" placeholder="Enter text here..."></textarea>
+        <br>
+        <button type="submit">Convert to Speech</button>
+    </form>
+    <audio id="audio" controls style="display: none;"></audio>
+</body>
+<script>
+    fetch('/audio')
+        .then(response => response.blob())
+        .then(blob => {
+            const audio = document.getElementById('audio');
+            const url = URL.createObjectURL(blob);
+            audio.src = url;
+            audio.style.display = 'block';
+        });
+</script>
+</html>
